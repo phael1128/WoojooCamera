@@ -1,4 +1,4 @@
-package com.example.cameracontrol
+package com.woojoo.woojoocamera.ui
 
 import android.content.ContentValues
 import android.os.Build
@@ -13,11 +13,11 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import com.example.cameracontrol.databinding.ActivityMainBinding
+import com.woojoo.woojoocamera.databinding.ActivityMainBinding
+import com.woojoo.woojoocamera.utils.checkCameraPermission
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Locale
-import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        checkCameraPermission()
         imageCapture = ImageCapture.Builder().setTargetRotation(this.windowManager.defaultDisplay.rotation).build()
 
         openCamera()
@@ -59,9 +60,7 @@ class MainActivity : AppCompatActivity() {
             override fun onError(exception: ImageCaptureException) {
                 Log.e("WooJooCamera save Fail", "Photo capture failed: ${exception.message}", exception)
             }
-
         })
-
     }
 
     private fun openCamera() {
@@ -87,6 +86,4 @@ class MainActivity : AppCompatActivity() {
             }
         }, ContextCompat.getMainExecutor(this))
     }
-
-
 }

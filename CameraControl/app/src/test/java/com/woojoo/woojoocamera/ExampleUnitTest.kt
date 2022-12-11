@@ -1,4 +1,4 @@
-package com.example.cameracontrol
+package com.woojoo.woojoocamera
 
 import org.junit.Test
 

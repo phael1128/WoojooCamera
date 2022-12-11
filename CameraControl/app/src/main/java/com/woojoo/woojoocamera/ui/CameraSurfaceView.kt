@@ -1,4 +1,4 @@
-package com.example.cameracontrol
+package com.woojoo.woojoocamera.ui
 
 import android.content.Context
 import android.hardware.Camera
